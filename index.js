@@ -25,5 +25,5 @@ require("./routers/index")(app);
 // require("./routers/files")(app);
 
 app.listen(config.port, () => {
-  console.log(`服务启动成功! http://localhost:${config.port}`); 
+  console.log(`服务启动成功! http://localhost:${config.port}`);
 });
