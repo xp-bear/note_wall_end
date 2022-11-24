@@ -7,5 +7,6 @@ const config = {
     PASSWORD: "root",
     DBS: "wall", //数据库
   },
+  imgHost: "http://localhost:8989",
 };
 module.exports = config;

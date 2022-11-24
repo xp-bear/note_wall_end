@@ -22,7 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // 引入路由
 require("./routers/index")(app);
-// require("./routers/files")(app);
+require("./routers/files")(app);
 
 app.listen(config.port, () => {
   console.log(`服务启动成功! http://localhost:${config.port}`);
