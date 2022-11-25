@@ -66,7 +66,7 @@ exports.deleteComment = async (req, res) => {
 };
 // 查询分页留言墙 type 0 留言 1 相片
 exports.findWallPage = async (req, res) => {
-  let { page, pageSize, type, label } = req.body;
+  let { page, pageSize, type, label, userId } = req.body;
   await dbModel.findWallPage(page, pageSize, type, label).then(async (result) => {
     for (let i = 0; i < result.length; i++) {
       //查找相应wall的赞、举报、撤销数据
@@ -91,6 +91,17 @@ exports.findWallPage = async (req, res) => {
 exports.findCommentPage = async (req, res) => {
   let { page, pageSize, id } = req.body;
   await dbModel.findCommentPage(page, pageSize, id).then((result) => {
+    res.send({
+      code: 200,
+      message: result,
+    });
+  });
+};
+
+// 查询用户是否点击爱心
+exports.likeCount = async (req, res) => {
+  let { wid, uid } = req.body;
+  await dbModel.likeCount(wid, uid).then((result) => {
     res.send({
       code: 200,
       message: result,

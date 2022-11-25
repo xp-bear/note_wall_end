@@ -48,4 +48,9 @@ module.exports = function (app) {
       ip: ip,
     });
   });
+
+  //查询用户是否点击爱心
+  app.post("/likecount", (req, res) => {
+    controller.likeCount(req, res);
+  });
 };
