@@ -53,4 +53,9 @@ module.exports = function (app) {
   app.post("/likecount", (req, res) => {
     controller.likeCount(req, res);
   });
+
+  // 删除相关图片或者视频资源。
+  app.post("/deletephoto", (req, res) => {
+    controller.deletePhoto(req, res);
+  });
 };

@@ -108,3 +108,13 @@ exports.likeCount = async (req, res) => {
     });
   });
 };
+// 删除相关图片或者视频资源。
+exports.deletePhoto = (req, res) => {
+  let { urlpath } = req.body; //"http://localhost:8989/photo/file-1672218723917.mp4"
+  dbModel.deletePhoto(urlpath).then((result) => {
+    res.send({
+      code: 200,
+      message: result,
+    });
+  });
+};
