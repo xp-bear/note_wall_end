@@ -35,11 +35,14 @@ module.exports = function (app) {
   app.post("/findwallpage", (req, res) => {
     controller.findWallPage(req, res);
   });
+  // 查询留言墙或照片墙的总条数。
+  app.post("/findwallphotototal", (req, res) => {
+    controller.findWallPhotoTotal(req, res);
+  });
   //倒叙分页查墙的评论
   app.post("/findcommentpage", (req, res) => {
     controller.findCommentPage(req, res);
   });
-
   //用户进入进行ip登记
   app.get("/signip", (req, res) => {
     let ip = req.ip;
