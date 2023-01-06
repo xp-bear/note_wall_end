@@ -69,6 +69,7 @@ exports.findWallPage = async (req, res) => {
   let { page, pageSize, type, label, userID } = req.body;
   await dbModel.findWallPage(page, pageSize, type, label, userID).then(async (result) => {
     for (let i = 0; i < result.length; i++) {
+      console.log(result[i].id, userID);
       //查找相应wall的赞、举报、撤销数据
       //喜欢
       result[i].like = await dbModel.feedbackCount(result[i].id, 0);
@@ -77,7 +78,7 @@ exports.findWallPage = async (req, res) => {
       //要求撤诉
       result[i].revoke = await dbModel.feedbackCount(result[i].id, 2);
       //是否点赞
-      result[i].islike = await dbModel.likeCount(result[i].id, result[i].userID);
+      result[i].islike = await dbModel.likeCount(result[i].id, userID);
       //评论数
       result[i].comcount = await dbModel.commentCount(result[i].id);
     }
